@@ -1,3 +1,0 @@
-# QuadraticFunction
-java
-sdfsgsasfdsdfsdff
