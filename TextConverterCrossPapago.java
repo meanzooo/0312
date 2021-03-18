@@ -1,4 +1,4 @@
-//I did'nt wrote the user ID and passwd, so this program have to error.
+//I did'nt wrote the client ID and passwd, so this program have to error.
 //So, If you want to use this program, please enter the client ID and password provided by Naver.
 
 package lecture_1_2st;
