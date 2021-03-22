@@ -152,9 +152,13 @@ public class MiniPingPongGame extends JPanel implements KeyListener {
 		
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_UP)
-				ySpeed = -3;
+				racquet2.ySpeed = -3;
 			else if (e.getKeyCode() == KeyEvent.VK_DOWN)
-				ySpeed = 3;
+				racquet2.ySpeed = 3;
+			else if (e.getKeyCode() == KeyEvent.VK_W)
+				racquet1.ySpeed = -3;
+			else if (e.getKeyCode() == KeyEvent.VK_S)
+				racquet1.ySpeed = 3;
 		}
 		
 		public Rectangle getBounds() {
