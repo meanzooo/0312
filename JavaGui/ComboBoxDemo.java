@@ -9,7 +9,7 @@ public class ComboBoxDemo extends JFrame implements ActionListener {
 	private JComboBox animalList;
 	
 	public ComboBoxDemo() {
-		this.setTitle("�޺� �ڽ�");
+		this.setTitle("ÄÞº¸ ¹Ú½º");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setSize(500,400);
 		
