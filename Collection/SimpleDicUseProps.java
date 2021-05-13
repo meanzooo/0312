@@ -1,4 +1,4 @@
-package Colletion;
+package Collection;
 
 import javax.swing.*;
 
@@ -9,44 +9,44 @@ import java.util.*;
 
 public class SimpleDicUseProps extends JPanel implements ActionListener{
 	/*
-	 * ´Ü¾î ÀÔ·Â¹ŞÀ» ¼ö ÀÖ´Â JTextField
-	 * °Ë»ö ¹öÆ°
-	 * Ãß°¡ ¹öÆ°
-	 * ´Ü¾îÀå ±¸ÇöÀ» À§ÇÑ ÀÚ·á±¸Á¶·Î Map °´Ã¼
+	 * ë‹¨ì–´ ì…ë ¥ë°›ì„ ìˆ˜ ìˆëŠ” JTextField
+	 * ê²€ìƒ‰ ë²„íŠ¼
+	 * ì¶”ê°€ ë²„íŠ¼
+	 * ë‹¨ì–´ì¥ êµ¬í˜„ì„ ìœ„í•œ ìë£Œêµ¬ì¡°ë¡œ Map ê°ì²´
 	 */
 	
 	private JTextField inputField = new JTextField(30);
-	private JButton searchBtn = new JButton("°Ë»ö");
-	private JButton addBtn = new JButton("Ãß°¡");
+	private JButton searchBtn = new JButton("ê²€ìƒ‰");
+	private JButton addBtn = new JButton("ì¶”ê°€");
 	
-	//Map °´Ã¼¸¦ ´Ü¾îÀå ±¸Çö¿¡ »ç¿ëÇÒ °ÍÀÓ.
-	//<key,value>¿¡¼­ key´Â ÇÑ±Û ´Ü¾î, value´Â ´ëÀÀµÇ´Â ¿µ¾î´Ü¾î·Î ÀúÀå.
+	//Map ê°ì²´ë¥¼ ë‹¨ì–´ì¥ êµ¬í˜„ì— ì‚¬ìš©í•  ê²ƒì„.
+	//<key,value>ì—ì„œ keyëŠ” í•œê¸€ ë‹¨ì–´, valueëŠ” ëŒ€ì‘ë˜ëŠ” ì˜ì–´ë‹¨ì–´ë¡œ ì €ì¥.
 	private Map<String, String> dict = new HashMap<>();
 	private static final String DIC_FILE_NAME = "dict.props";
 	
 	public SimpleDicUseProps() {
-		//PanelÀÇ ±âº» ·¹ÀÌ¾Æ¿ôÀº FlowLayout.
+		//Panelì˜ ê¸°ë³¸ ë ˆì´ì•„ì›ƒì€ FlowLayout.
 		this.add(inputField);
 		this.add(searchBtn);
 		this.add(addBtn);
 		
-		//searchBtn, addBtn¿¡ Å¬¸¯ ÀÌº¥Æ®°¡ ¹ß»ıÇßÀ» ¶§ Ã³¸®ÇÒ ¸®½º³Ê¸¦ ÁöÁ¤.
+		//searchBtn, addBtnì— í´ë¦­ ì´ë²¤íŠ¸ê°€ ë°œìƒí–ˆì„ ë•Œ ì²˜ë¦¬í•  ë¦¬ìŠ¤ë„ˆë¥¼ ì§€ì •.
 		searchBtn.addActionListener(this);
 		addBtn.addActionListener(this);
 		
 		this.setPreferredSize(new Dimension(600,50));
 		
-		//ÆÄÀÏ¿¡ key=value ÇüÅÂ·Î ÀúÀåµÈ ¿£Æ®¸®µéÀ» ÀĞ¾î¼­, dict¸¦ ±¸¼ºÇÏÀÚ.
+		//íŒŒì¼ì— key=value í˜•íƒœë¡œ ì €ì¥ëœ ì—”íŠ¸ë¦¬ë“¤ì„ ì½ì–´ì„œ, dictë¥¼ êµ¬ì„±í•˜ì.
 		buildDictionaryFromFile();
 	}
 	
 	private void buildDictionaryFromFile() {
-		// Properties : ÀÏÁ¾ÀÇ MapÀÎµ¥ key, valueÀÇ Å¸ÀÔÀÌ °¢°¢ String, StringÀ¸·Î °íÁ¤µÈ ÀÏÁ¾ÀÇ MapÀÌ´Ù. 
+		// Properties : ì¼ì¢…ì˜ Mapì¸ë° key, valueì˜ íƒ€ì…ì´ ê°ê° String, Stringìœ¼ë¡œ ê³ ì •ëœ ì¼ì¢…ì˜ Mapì´ë‹¤. 
 		Properties props = new Properties();
-//		props.put("»ç°ú", "apple");
-//		System.out.println("»ç°ú"); ÀÌ·¸°Ô ÇÒ ¼öµµ ÀÖÁö¸¸
+//		props.put("ì‚¬ê³¼", "apple");
+//		System.out.println("ì‚¬ê³¼"); ì´ë ‡ê²Œ í•  ìˆ˜ë„ ìˆì§€ë§Œ
 		
-		//ÆÄÀÏ¿¡¼­ ÀĞ¾î¼­ props °´Ã¼ÀÇ <key, value> ½ÖÀ» ±¸¼ºÇÒ ¼ö ÀÖ´Ù.
+		//íŒŒì¼ì—ì„œ ì½ì–´ì„œ props ê°ì²´ì˜ <key, value> ìŒì„ êµ¬ì„±í•  ìˆ˜ ìˆë‹¤.
 //		FileReader fReader = new FileReader(DIC_FILE_NAME);
 //		props.load(fReader);
 		try (FileReader fReader = new FileReader(DIC_FILE_NAME)) {
@@ -70,37 +70,37 @@ public class SimpleDicUseProps extends JPanel implements ActionListener{
 		}
 		if (e.getSource()==searchBtn) {
 		/*
-		 * ÀÔ·ÂµÈ ´Ü¾î¸¦ ÃßÃâÇÏ°í
-		 * ±× ´Ü¾î¸¦ key°ªÀ¸·Î °¡Áö´Â ´ëÀÀµÇ´Â ¸Ê ¿£Æ®¸®°¡ ÀÖ´ÂÁö °Ë»ç -> dict.get(´Ü¾î);
-		 * 		±× ´Ü¾î¿¡ ´ëÀÀµÇ´Â °ªÀÌ ÀÖÀ¸¸é JOptionPane.showMessageDialog()	¸Ş¼­µå¸¦ È£ÃâÇØ¼­ ±× ´ëÀÀµÇ´Â °ªÀ» º¸¿©ÁØ´Ù.
-		 * 		¾øÀ¸¸é(=nullÀÌ¸é) JOptionPane.showMessageDialog() ¸Ş¼­µå¸¦ È£ÃâÇØ¼­ '´Ü¾î¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù' ¶ó°í Ãâ·ÂÇØÁØ´Ù.
-		 * inputField¸¦ ºó ¹®ÀÚ¿­·Î ¼³Á¤
+		 * ì…ë ¥ëœ ë‹¨ì–´ë¥¼ ì¶”ì¶œí•˜ê³ 
+		 * ê·¸ ë‹¨ì–´ë¥¼ keyê°’ìœ¼ë¡œ ê°€ì§€ëŠ” ëŒ€ì‘ë˜ëŠ” ë§µ ì—”íŠ¸ë¦¬ê°€ ìˆëŠ”ì§€ ê²€ì‚¬ -> dict.get(ë‹¨ì–´);
+		 * 		ê·¸ ë‹¨ì–´ì— ëŒ€ì‘ë˜ëŠ” ê°’ì´ ìˆìœ¼ë©´ JOptionPane.showMessageDialog()	ë©”ì„œë“œë¥¼ í˜¸ì¶œí•´ì„œ ê·¸ ëŒ€ì‘ë˜ëŠ” ê°’ì„ ë³´ì—¬ì¤€ë‹¤.
+		 * 		ì—†ìœ¼ë©´(=nullì´ë©´) JOptionPane.showMessageDialog() ë©”ì„œë“œë¥¼ í˜¸ì¶œí•´ì„œ 'ë‹¨ì–´ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤' ë¼ê³  ì¶œë ¥í•´ì¤€ë‹¤.
+		 * inputFieldë¥¼ ë¹ˆ ë¬¸ìì—´ë¡œ ì„¤ì •
 		 */
 		System.out.println("["+key+"]");
 		String value = dict.get(key);
-		if (value != null) { //´ëÀÀµÇ´Â ´Ü¾î°¡ ÀÖ´Â °æ¿ì
+		if (value != null) { //ëŒ€ì‘ë˜ëŠ” ë‹¨ì–´ê°€ ìˆëŠ” ê²½ìš°
 			JOptionPane.showMessageDialog(this,value,key,JOptionPane.INFORMATION_MESSAGE);
-		} else { //´ëÀÀµÇ´Â ´Ü¾î°¡ ¾ø´Â °æ¿ì
-			JOptionPane.showMessageDialog(this, "´Ü¾î¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.", key,
+		} else { //ëŒ€ì‘ë˜ëŠ” ë‹¨ì–´ê°€ ì—†ëŠ” ê²½ìš°
+			JOptionPane.showMessageDialog(this, "ë‹¨ì–´ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", key,
 											JOptionPane.ERROR_MESSAGE);
 				}
 
 		} else if (e.getSource()==addBtn) {
 			/*
-			 * ÀÔ·ÂµÈ ´Ü¾î¸¦ ÃßÃâ
+			 * ì…ë ¥ëœ ë‹¨ì–´ë¥¼ ì¶”ì¶œ
 			 * String value = JOptionPane.showInputDialog();
-			 * ¸Ş¼­µå¸¦ È£ÃâÇØ¼­ Ãß°¡ÇÒ ¿µ¾î ´Ü¾î¸¦ ÀÔ·Â¹Ş´Â´Ù.
-			 * dict.put(ÀÔ·ÂÇÊµå¿¡ ÀÔ·ÂµÈ ´Ü¾î, inputDialog¿¡ ÀÔ·ÂµÈ ´Ü¾î);
-			 * inputField¸¦ ºó ¹®ÀÚ¿­·Î ¼³Á¤
+			 * ë©”ì„œë“œë¥¼ í˜¸ì¶œí•´ì„œ ì¶”ê°€í•  ì˜ì–´ ë‹¨ì–´ë¥¼ ì…ë ¥ë°›ëŠ”ë‹¤.
+			 * dict.put(ì…ë ¥í•„ë“œì— ì…ë ¥ëœ ë‹¨ì–´, inputDialogì— ì…ë ¥ëœ ë‹¨ì–´);
+			 * inputFieldë¥¼ ë¹ˆ ë¬¸ìì—´ë¡œ ì„¤ì •
 			 */
-			String value = JOptionPane.showInputDialog(this, key + "¿¡ ´ëÀÀµÇ´Â ¿µ¾î´Ü¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			String value = JOptionPane.showInputDialog(this, key + "ì— ëŒ€ì‘ë˜ëŠ” ì˜ì–´ë‹¨ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 			if (value.trim().length() == 0) return;
 			dict.put(key, value);
 			
-			//ÆÄÀÏ¿¡µµ key=valueÀÇ ½ÖÀ¸·Î ±â·ÏÇØµÎÀÚ
+			//íŒŒì¼ì—ë„ key=valueì˜ ìŒìœ¼ë¡œ ê¸°ë¡í•´ë‘ì
 			
 			
-			JOptionPane.showMessageDialog(this, value + "¿µ¾î ´Ü¾î°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.", key,
+			JOptionPane.showMessageDialog(this, value + "ì˜ì–´ ë‹¨ì–´ê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.", key,
 											JOptionPane.INFORMATION_MESSAGE);
 			}
 		inputField.setText("");
@@ -110,7 +110,7 @@ public class SimpleDicUseProps extends JPanel implements ActionListener{
 		JFrame frame = new JFrame();
 		SimpleDicUseProps dictPanel = new SimpleDicUseProps();
 		frame.add(dictPanel);
-		frame.setTitle("³ªÀÇ ÇÑ¿µ »çÀü");
+		frame.setTitle("ë‚˜ì˜ í•œì˜ ì‚¬ì „");
 		
 		frame.setResizable(false);
 		frame.pack();
