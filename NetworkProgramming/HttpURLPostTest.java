@@ -19,7 +19,7 @@ public class HttpURLPostTest {
       con.setRequestProperty("content-type", "application/x-www-form-urlencoded"); // 헤더정보
       
       // id = mzkang, pw = 1234
-      String data = "id=mzkang $pw=1234";
+      String data = "id=mzkang&pw=1234";
       OutputStream stream = con.getOutputStream();
       OutputStreamWriter owriter = new OutputStreamWriter(stream, "UTF-8");
       PrintWriter writer = new PrintWriter(owriter); //println 를 사용할 수 있음
